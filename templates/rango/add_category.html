@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+{% block title %}Add new category{% endblock %}
+{% block body_block %}
+
+
+        <form role="form" id="category_form" method="post" action="/rango/add_category/">
+         <h2 class="form-signin-heading">Add a Category </h2>
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+
+            {% for field in form.visible_fields %}
+                {{ field.errors }}
+
+                {% bootstrap_field field %}
+            {% endfor %}
+
+             {% buttons %}
+        <button type="submit" class="btn btn-primary">
+             Submit
+        </button>
+    {% endbuttons %}
+        </form>
+{% endblock %}

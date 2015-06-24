@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% load staticfiles %}
+{% block body_block %}
+
+     {% if saved %}
+             <h2>Your profile saved!</h2>
+     {% endif %}
+
+        {% if user %}
+        <h2>{{ user.username }} profile:</h2>
+         {% if user_profile %}
+          <div class="col-md-4">
+        <h2>Website:</h2>
+        <a href="{{ user_profile.website }}">{{ user_profile.website }}</a>
+        <h2>User picture</h2>
+
+        <img src="/media/{{ user_profile.picture }}" class="img-responsive img-rounded">
+          </div>
+        {% else %}
+              <h2>Profile is empty</h2>
+        {% endif %}
+        {% ifequal request.user user %}
+             <div class="col-md-4">
+            <h2>Edit profile:</h2>
+             <form method="post" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% bootstrap_form profile_form %}
+                {% buttons %}
+             <button type="submit" class="btn btn-primary"> Submit </button>
+        {% endbuttons %}
+
+        </form>
+
+        {% endifequal %}
+            </div>
+        {% else %}
+        <h2>User not found</h2>
+        {% endif %}
+
+
+
+{% endblock %}

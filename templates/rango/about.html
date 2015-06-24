@@ -1,0 +1,25 @@
+
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+About us
+{% endblock %}
+
+{% block body_block %}
+     <p> Visits: {{ visits }}</p>
+<div class="page-header">
+                <h1>About</h1>
+            </div>
+<strong>{{ about_us }}</strong><br />
+
+<img src="/media/rango.jpg" alt="Picture of Rango" />
+
+<button onClick="alert('You clicked the button using Javascript.');">
+       Click Me - I run Javascript
+</button>
+
+<button id="about-btn"> Click Me - I'm Javascript on Speed</button>
+<p>This is a example</p>
+<p>This is another example</p>
+<div id="msg">Hello</div>
+{% endblock %}

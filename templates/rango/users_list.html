@@ -1,0 +1,31 @@
+
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Users list{% endblock %}
+
+{% block body_block %}
+
+<div class="row placeholders">
+            <div class="col-xs-12 col-sm-4 placeholder">
+                   <div class="panel panel-primary">
+                    <div class="panel-heading">
+                    <h3 class="panel-title">Users list:</h3>
+                    </div>
+                     </div>
+
+              {% if object_list %}
+                     <ul class="list-group">
+                        {% for user in users_list %}
+                         <li class="list-group-item"><a href="{% url 'profile' user.id %}">{{ user.username }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <strong>No users for now :(</strong>
+                {% endif %}
+            </div>
+            </div>
+
+
+{% endblock %}
